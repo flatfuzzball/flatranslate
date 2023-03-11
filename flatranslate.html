@@ -4,6 +4,56 @@
 	<title>flatranslate</title>
 	<meta charset="UTF-8">
 	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script>
+	<style>body {
+  font-family: Arial, sans-serif;
+  background-color: #f2f2f2;
+}
+
+h1 {
+  text-align: center;
+}
+
+div {
+  margin-bottom: 10px;
+  text-align: center;
+}
+
+label {
+  display: inline-block;
+  width: 150px;
+  font-weight: bold;
+  text-align: center;
+}
+
+select, textarea {
+  width: 300px;
+  height: 30px;
+  font-size: 16px;
+  padding: 5px;
+  border-radius: 5px;
+  border: 1px solid #ccc;
+  text-align: center;
+}
+
+button {
+  display: block;
+  margin: 0 auto;
+  width: 120px;
+  height: 40px;
+  font-size: 16px;
+  font-weight: bold;
+  color: #fff;
+  background-color: #4285f4;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  
+}
+
+textarea[readonly] {
+  background-color: #eee;
+}
+</style>
 </head>
 <body>
 	<h1>flatranslate</h1>
@@ -15,6 +65,7 @@
 			<option value="fr">French</option>
 			<option value="de">German</option>
 			<option value="it">Italian</option>
+			<option value="sv">Swedish</option>
 		</select>
 	</div>
 	<div>
@@ -25,11 +76,15 @@
 			<option value="fr">French</option>
 			<option value="de">German</option>
 			<option value="it">Italian</option>
+			<option value="sv">Swedish</option>
 		</select>
 	</div>
 	<div>
 		<label for="text-to-translate">Text to Translate:</label>
 		<textarea id="text-to-translate"></textarea>
+	</div>
+	<div>
+		<button id="swap-button">Swap Languages</button>
 	</div>
 	<button id="translate-button">Translate</button>
 	<div>
@@ -54,6 +109,12 @@
 					console.log('Error: ' + textStatus + ' ' + errorThrown);
 				}
 			});
+		});
+			$('#swap-button').click(function() {
+			var sourceLanguage = $('#source-language').val();
+			var targetLanguage = $('#target-language').val();
+			$('#source-language').val(targetLanguage);
+			$('#target-language').val(sourceLanguage);
 		});
 	</script>
 </body>
